@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styled from "styled-components";
 // import Logo from "./Img/logo.png";
 import Img1 from "./Img/spaceTravel.jpg";
