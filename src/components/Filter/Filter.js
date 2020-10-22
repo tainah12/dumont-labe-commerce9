@@ -4,6 +4,7 @@ import './styles';
 import {
   Container,
   ItemContainer,
+  H2,
   Label,
   Input,
 } from './styles'
@@ -28,7 +29,7 @@ export default class Filter extends Component {
   render() {
     return (
       <Container>
-        <h2>Filtros:</h2>
+        <H2>Filtros:</H2>
         <ItemContainer>
           <Label>Valor Mínimo:</Label>
           <Input type={'number'} value={this.state.minValue} onChange={this.onChangeMinValue} min={0}/>
