@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import logo from "./Img/logo.png";
+// import Logo from "./Img/logo.png";
 import Img1 from "./Img/spaceTravel.jpg";
 import Img2 from "./Img/spaceship.jpg";
 import Img3 from "./Img/spaceClothing.jpg";
@@ -11,7 +11,7 @@ import Img7 from "./Img/funnyClothe.jpg";
 import Img8 from "./Img/toys.jpg";
 
 const Header = styled.header`
-background-color: darkblue;
+background-color: #2A2F8C;
 width: 100%;
 position: fixed;
 padding: 1%;
@@ -25,88 +25,136 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 `;
 
 const Article = styled.article`
+background-color:black;
+`;
+
+const Select = styled.select`
+margin-top: 5%;
+margin-left: 80%;
+border-radius: 30px;
+background-color: #D93636;
+padding:10px;
+border:none;
+color:white;
+font-weight: bold;
+cursor: pointer;
+`;
+
+const Shopping = styled.section`
 display: grid;
-justify-items: center;
+grid-template-columns: repeat(4, 1fr);
+background-color: #efefef;
+padding: 5%;
+align-items:center;
+justify-self: center;
+width: 80%;
+margin: auto;
+margin-top: 3%;
+`;
+
+const Cards = styled.div`
+display:flex;
+flex-direction:column;
+margin: 30px;
+justify-content: center;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+text-align: center;
 align-items: center;
-grid-template-rows: 1fr 1fr;
-grid-template-columns: repeat(4 1fr);
-padding:5%;
 `;
 
 const Img = styled.img`
-width: 10%;
+width: 80%;
+min-height: 200px;
+max-height: 200px;
+border-radius: 20px;
 `;
 
 const Button = styled.button`
 background-color: black;
 color: white;
-display:block;
-width: 10%;
+width: 80%;
 padding: 10px;
 border-radius: 30px;
+border:none;
 margin-bottom: 1%; //tirar depois
+cursor: pointer;
+&:hover {
+  {Button}
+  background-color:#D93636;
+};
 `;
 
-// const Logo = styled.img`
-// width: 90px;
-// display: inline;
-
-// `;
 
 function App() {
   return (
     <body className="App">
       <main>
       <Header> 
-      {/* <Logo src={logo} alt="logotipo"/>     */}
+      {/* <Img src={Logo} alt="logotipo"/>     */} 
         <Nav>
          LabECommerce
         </Nav>      
       </Header>
 
       <Article>
-          <section>              
+          <Select>
+            <option>Preço: Crescente</option>
+            <option>Preço: Decrescente</option>
+          
+          </Select>
+
+          <Shopping> 
+          <Cards>           
               <Img src={Img1} alt="spaceTravel product"/>
               <p>Viagem espacial</p>
               <p>US$ 700,00 </p>
               <Button>Comprar</Button>
-
+          </Cards>      
+          <Cards>
               <Img src={Img2} alt="spaceship product"/>
               <p>Astronave</p>
               <p>US$ 2000,00 </p>
               <Button>Comprar</Button>
-
+          </Cards>
+          <Cards>
               <Img src={Img3} alt="spaceClothing product"/>
               <p>Roupa espacial</p>
               <p>US$ 100,00 </p>
               <Button>Comprar</Button>
-
+          </Cards>
+          <Cards>
               <Img src={Img4} alt="satellite product"/>
               <p>Satélite</p>
               <p>US$ 2000,00 </p>
               <Button>Comprar</Button>
-
+          </Cards>
+          <Cards>
               <Img src={Img5} alt="oldSpaceship product"/>
               <p>Satélite antigo</p>
               <p>US$ 800,00 </p>
               <Button>Comprar</Button>
-
+          </Cards>
+          <Cards>
               <Img src={Img6} alt="meteorite product"/>
               <p>Meteorito</p>
               <p>US$ 2000,00 </p>
               <Button>Comprar</Button>
-
+          </Cards>
+          <Cards>
               <Img src={Img7} alt="funnyClothe product"/>
               <p>Camiseta Fake Nasa</p>
               <p>US$ 10,00 </p>
               <Button>Comprar</Button>
-
+          </Cards>
+            <Cards>
               <Img src={Img8} alt="toys product"/>
               <p>Brinquedo Space Capsule</p>
               <p>US$ 30,00 </p>
               <Button>Comprar</Button>
-
-          </section>
+            </Cards>
+            
+          </Shopping>
       </Article>
       </main>
     </body>
