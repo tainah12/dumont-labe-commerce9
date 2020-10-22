@@ -9,6 +9,7 @@ import Img5 from "./Img/oldSpaceship.jpg";
 import Img6 from "./Img/meteorite.jpg";
 import Img7 from "./Img/funnyClothe.jpg";
 import Img8 from "./Img/toys.jpg";
+import Card from "./components/Card";
 
 const Header = styled.header`
 background-color: #2A2F8C;
@@ -52,41 +53,54 @@ margin: auto;
 margin-top: 3%;
 `;
 
-const Cards = styled.div`
-display:flex;
-flex-direction:column;
-margin: 30px;
-justify-content: center;
-font-family: Arial, Helvetica, sans-serif;
-font-weight: bold;
-text-align: center;
-align-items: center;
-`;
 
-const Img = styled.img`
-width: 80%;
-min-height: 200px;
-max-height: 200px;
-border-radius: 20px;
-`;
+export default class App extends React.Component {
+  state = {
+    products:[
+      {id: 1,
+      name:"Viagem espacial",
+      value: 700,
+      image: Img1
+      },
+      {id: 2,
+      name:"Astronave",
+      value: 2000,
+      image: Img2
+      },
+      {id: 3,
+      name:"Roupa espacial",
+      value: 100,
+      image: Img3
+      },
+      {id: 4,
+      name:"Satélite",
+      value: 2000,
+      image: Img4
+      },
+      {id: 5,
+      name:"Satélite antigo",
+      value: 800,
+      image: Img5
+      },
+      {id: 6,
+      name:"Meteorito",
+      value: 2500,
+      image: Img6
+      },
+      {id: 7,
+      name:"Camiseta Fake Nasa",
+      value: 10,
+      image: Img7
+      },
+      {id: 8,
+      name:"Brinquedo Space Capsule",
+      value: 30,
+      image: Img8
+      },
 
-const Button = styled.button`
-background-color: black;
-color: white;
-width: 80%;
-padding: 10px;
-border-radius: 30px;
-border:none;
-margin-bottom: 1%; //tirar depois
-cursor: pointer;
-&:hover {
-  {Button}
-  background-color:#D93636;
-};
-`;
-
-
-function App() {
+    ]
+  } 
+  render(){
   return (
     <body className="App">
       <main>
@@ -105,60 +119,15 @@ function App() {
           </Select>
 
           <Shopping> 
-          <Cards>           
-              <Img src={Img1} alt="spaceTravel product"/>
-              <p>Viagem espacial</p>
-              <p>US$ 700,00 </p>
-              <Button>Comprar</Button>
-          </Cards>      
-          <Cards>
-              <Img src={Img2} alt="spaceship product"/>
-              <p>Astronave</p>
-              <p>US$ 2000,00 </p>
-              <Button>Comprar</Button>
-          </Cards>
-          <Cards>
-              <Img src={Img3} alt="spaceClothing product"/>
-              <p>Roupa espacial</p>
-              <p>US$ 100,00 </p>
-              <Button>Comprar</Button>
-          </Cards>
-          <Cards>
-              <Img src={Img4} alt="satellite product"/>
-              <p>Satélite</p>
-              <p>US$ 2000,00 </p>
-              <Button>Comprar</Button>
-          </Cards>
-          <Cards>
-              <Img src={Img5} alt="oldSpaceship product"/>
-              <p>Satélite antigo</p>
-              <p>US$ 800,00 </p>
-              <Button>Comprar</Button>
-          </Cards>
-          <Cards>
-              <Img src={Img6} alt="meteorite product"/>
-              <p>Meteorito</p>
-              <p>US$ 2000,00 </p>
-              <Button>Comprar</Button>
-          </Cards>
-          <Cards>
-              <Img src={Img7} alt="funnyClothe product"/>
-              <p>Camiseta Fake Nasa</p>
-              <p>US$ 10,00 </p>
-              <Button>Comprar</Button>
-          </Cards>
-            <Cards>
-              <Img src={Img8} alt="toys product"/>
-              <p>Brinquedo Space Capsule</p>
-              <p>US$ 30,00 </p>
-              <Button>Comprar</Button>
-            </Cards>
-            
+            {this.state.products.map((product) => {
+              return <Card image={product.image} name={product.name} value={product.value.toFixed(2)}/>  
+            })}                        
+                       
           </Shopping>
       </Article>
       </main>
     </body>
   );
 }
+}
 
-export default App;
