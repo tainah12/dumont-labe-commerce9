@@ -9,4 +9,3 @@ Carrinho parcial.
 Link Surge
 http://misty-apparel.surge.sh/
 
-Imagens
