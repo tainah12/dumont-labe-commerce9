@@ -155,7 +155,8 @@ export default class App extends React.Component {
     viewCart: false,
     filter: 'smaller',
     filtring: false,
-    filteredProducts: []
+    filteredProducts: [],
+    shoppings: []
   }
 
   /*Inicia a página com os produtos em ordem de menor preço */
@@ -241,8 +242,14 @@ export default class App extends React.Component {
     }
   }
 
+  addProduct = (id) => {
+    const shopping = this.state.products.filter(product => product.id === id);
+    let newShopping = [...this.state.shoppings, shopping[0]]
+    return this.setState({ shoppings: newShopping});
+  }
 
   render() {
+    
     return (
       <div>
         <Header>
@@ -263,10 +270,10 @@ export default class App extends React.Component {
             <Shopping viewCart={this.state.viewCart}>
               {this.state.filtring ?
                 this.state.filteredProducts.map(product => {
-                  return <Card key={product.id} image={product.image} title={product.name} price={product.value.toFixed(2)} />
+                  return <Card addShopping={() => this.addProduct(product.id)} key={product.id} image={product.image} title={product.name} price={product.value.toFixed(2)} />
                 }) :
                 this.state.products.map(product => {
-                  return <Card key={product.id} image={product.image} title={product.name} price={product.value.toFixed(2)} />
+                  return <Card addShopping={() => this.addProduct(product.id)} key={product.id} image={product.image} title={product.name} price={product.value.toFixed(2)} />
                 })}
             </Shopping>
           </ShoppingContainer>
