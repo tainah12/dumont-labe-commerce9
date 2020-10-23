@@ -45,13 +45,17 @@ const Button = styled.button`
 
 
 export default class Card extends React.Component {
+    sendId = (id) => {
+        this.props.addShopping(id)
+      }
+
     render() {
         return (
             <Container>
                 <Img src={this.props.image} alt={this.props.name} />
                 <Title>{this.props.title}</Title>
                 <Price>US$ {this.props.price}</Price>
-                <Button>Comprar</Button>
+                <Button onClick={this.sendId}>Comprar</Button>
             </Container>
         )
     }
