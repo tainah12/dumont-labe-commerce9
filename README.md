@@ -1,1 +1,12 @@
-Sejam bem vindos ao Labe-commerce, esse repositório contém um esqueleto de app React e um .gitignore.
+LabEcommerce 9
+
+O que funciona
+Layout, ordenação crescente e decrescente, quantidade de produtos, filtros maior, filtro menor, filtro por nome.
+
+O que não funciona
+Carrinho parcial.
+
+Link Surge
+http://misty-apparel.surge.sh/
+
+Imagens
