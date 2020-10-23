@@ -158,10 +158,89 @@ export default class App extends React.Component {
     filteredProducts: []
   }
 
+  /*Inicia a página com os produtos em ordem de menor preço */
+  componentDidMount() {
+    if (localStorage.getItem("products")) {
+      const products = localStorage.getItem("products")
+      const ProductsList = JSON.parse(products)
+      this.setState({
+        products: ProductsList
+      })
+    }
+    this.OrderProductGrowing();
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("products", JSON.stringify(this.state.products))
+  };
+
   /*Abre e fecha carrinho de compras */
   onClickCartButton = () => {
     this.setState({ viewCart: !this.state.viewCart })
   }
+
+  /*Monitora e altera o estado do filtro maior e menor */
+  onChangeFilter = (event) => {
+    this.setState({ filter: event.target.value })
+
+    this.OrderProductGrowing();
+  }
+
+  /*Ordena a ordem dos produtos baseadas no filter */
+  OrderProductGrowing = () => {
+    if (this.state.filter === 'bigger') {
+      const orderedProducts = this.state.products.sort((a, b) => {
+        if (a.value > b.value) {
+          return 1;
+        }
+        if (a.value < b.value) {
+          return -1;
+        }
+        return 0;
+      })
+
+      const orderedProductsFiltered = this.state.filteredProducts.sort((a, b) => {
+        if (a.value > b.value) {
+          return 1;
+        }
+        if (a.value < b.value) {
+          return -1;
+        }
+        return 0;
+      })
+      return this.setState({ products: orderedProducts, filteredProducts: orderedProductsFiltered })
+
+    } else {
+      const orderedProducts = this.state.products.reverse()
+      const orderedProductsFiltered = this.state.filteredProducts.reverse()
+
+      return this.setState({ products: orderedProducts, filteredProducts: orderedProductsFiltered });
+    }
+  }
+
+  OnChangeValuesFilters = (smallerValue, biggerValue, nameValue) => {
+    const productName = nameValue.toUpperCase();
+
+    if (smallerValue >= 0 && biggerValue >= 0) {
+      let filteredProducts = this.state.products.filter((product) => {
+        return (smallerValue <= product.value && product.value <= biggerValue);
+      })
+
+    if(nameValue !== "") {
+      filteredProducts = this.state.products.filter((product) => {
+        return (smallerValue <= product.value && product.value <= biggerValue && productName === product.name.toUpperCase());
+      })
+    }
+
+      this.setState({ filtring: true })
+
+      return this.setState({ filteredProducts: filteredProducts });
+    } else {
+      this.setState({ filtring: false })
+      return this.setState({ products: this.state.products });
+    }
+  }
+
 
   render() {
     return (
@@ -172,7 +251,7 @@ export default class App extends React.Component {
           </Nav>
         </Header>
         <AppContainer>
-          <Filter filteredValues={this.OnChangeValuesFilters} />
+          <Filter filteredValues={this.OnChangeValuesFilters}/>
           <ShoppingContainer>
             <HeaderContainer viewCart={this.state.viewCart}>
               <H3>Quantidade de Produtos: <Span>{this.state.filtring ? this.state.filteredProducts.length : this.state.products.length}</Span></H3>

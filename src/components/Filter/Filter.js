@@ -16,14 +16,19 @@ export default class Filter extends Component {
     searchProduct: ""
   }
 
-  onChangeMinValue = (event) => {
-    this.setState({minValue: event.target.value})
+  onChangeMinValue = async (event) => {
+    await this.setState({minValue: Number(event.target.value)})
+
+    this.props.filteredValues(this.state.minValue, this.state.maxValue || 10000000.0, this.state.searchProduct)
   }
-  onChangeMaxValue = (event) => {
-    this.setState({maxValue: event.target.value})
+  onChangeMaxValue = async (event) => {
+    await this.setState({maxValue: Number(event.target.value)})
+    this.props.filteredValues(this.state.minValue, this.state.maxValue || 10000000.0, this.state.searchProduct)
   }
-  onChangesearchProduct = (event) => {
-    this.setState({searchProduct: event.target.value})
+  onChangesearchProduct = async (event) => {
+    await this.setState({searchProduct: event.target.value})
+
+    this.props.filteredValues(this.state.minValue, this.state.maxValue || 10000000.0, this.state.searchProduct) 
   }
 
   render() {
@@ -32,11 +37,11 @@ export default class Filter extends Component {
         <H2>Filtros:</H2>
         <ItemContainer>
           <Label>Valor Mínimo:</Label>
-          <Input type={'number'} value={this.state.minValue} onChange={this.onChangeMinValue} min={0}/>
+          <Input type={'number'} value={this.state.minValue || ""} onChange={this.onChangeMinValue} min={0}/>
         </ItemContainer>
         <ItemContainer>
           <Label>Valor Máximo:</Label>
-          <Input type={'number'} value={this.state.maxValue} onChange={this.onChangeMaxValue} min={0}/>
+          <Input type={'number'} value={this.state.maxValue || ""} onChange={this.onChangeMaxValue} min={0}/>
         </ItemContainer>
         <ItemContainer>
           <Label>Buscar Produto: </Label>
