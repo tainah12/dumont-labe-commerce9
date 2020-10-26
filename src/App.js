@@ -32,7 +32,7 @@ const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: ${({ viewCart }) => (viewCart ? '75%' : '99%')};
+  width: ${({ viewCart }) => (viewCart ? '70%' : '99%')};
 `
 const H3 = styled.h3`
   background-color: #D93636;
@@ -51,8 +51,8 @@ const Shopping = styled.div`
   grid-template-rows: 1fr 1fr;
   grid-gap: 10px;
   background-color: #efefef;
-  width: ${({ viewCart }) => (viewCart ? '74%' : '98%')};
-  height: 80vh;
+  width: ${({ viewCart }) => (viewCart ? '70%' : '98%')};
+  height: 100vh;
   padding: 10px;
 `
 const ButtonCart = styled.div`
@@ -473,7 +473,7 @@ export default class App extends React.Component {
               })}
               <TotalBlock>
               <TotalTitle>Total:</TotalTitle>
-              <TotalSum>US${total}.00</TotalSum>
+              <TotalSum>US${" " + total}.00</TotalSum>
               </TotalBlock>
             </Block>}
           </ShoppingCart>

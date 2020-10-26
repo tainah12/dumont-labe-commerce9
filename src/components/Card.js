@@ -13,6 +13,7 @@ const Container = styled.div`
 `;
 
 const Img = styled.img`
+    width: 100%;
     min-height: 170px;
     max-height: 170px;
     border-radius: 20px;
@@ -20,7 +21,7 @@ const Img = styled.img`
 
 const Title = styled.p`
     font-weight: bold;
-    margin: 10px;
+    margin: auto;
 `
 
 const Price = styled.p`
