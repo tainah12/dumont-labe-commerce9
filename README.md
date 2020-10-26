@@ -2,12 +2,12 @@
 
 O que funciona:
 
-- Layout, ordenação crescente e decrescente, quantidade de produtos, filtros maior, filtro menor, filtro por nome.
+- Todas as funções requeridas
 
 O que não funciona: 
 
-- Carrinho parcial.
+---
 
 Link Surge
-http://misty-apparel.surge.sh/
+http://labecommerce9.surge.sh
 
