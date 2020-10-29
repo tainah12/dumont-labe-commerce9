@@ -1,1 +1,13 @@
-Sejam bem vindos ao Labe-commerce, esse repositório contém um esqueleto de app React e um .gitignore.
+- LabEcommerce 9
+
+O que funciona:
+
+- Todas as funções requeridas
+
+O que não funciona: 
+
+---
+
+Link Surge
+http://labecommerce09.surge.sh
+
